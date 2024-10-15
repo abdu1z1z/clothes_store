@@ -1,0 +1,455 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="ClotheWebsite.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("image.background.jpg");
+        }
+
+        header {
+            background-color: #2f3536;
+            color: #b6ff00;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 22px;
+        }
+
+
+        .hero {
+            background-image: url("image.background.jpg");
+            background-position: center;
+            background-size: cover;
+            color: #1f581d;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+            .hero h2 {
+                font-size: 48px;
+                margin: 0;
+                color: #008cBA;
+            }
+
+            .hero p {
+                font-size: 24px;
+                margin: 20px 0;
+            }
+
+            .hero a {
+                background-color: rgb(255, 216, 0, 0.34);
+                color: #333;
+                display: inline-block;
+                font-size: 18px;
+                margin-top: 20px;
+                padding: 10px 20px;
+                text-decoration: none;
+            }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 50px 20px;
+            background-color: white
+        }
+
+        .feature-item {
+            flex: 1;
+            margin: 20px;
+            max-width: 300px;
+            text-align: center;
+        }
+
+            .feature-item img {
+                height: 100px;
+                margin-bottom: 20px;
+            }
+
+            .feature-item h3 {
+                font-size: 24px;
+                margin: 0;
+            }
+
+            .feature-item p {
+                font-size: 16px;
+                margin: 0;
+            }
+
+        .featured-products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 50px 20px;
+            background-color: #ffffff;
+        }
+
+        .cards {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+            padding: 10px;
+            width: 250px;
+        }
+
+            .cards img {
+                width: 100%;
+            }
+
+        .card-details {
+            margin-top: 10px;
+        }
+
+            .card-details h2 {
+                font-size: 20px;
+                margin: 0;
+            }
+
+            .card-details p {
+                font-size: 14px;
+                margin: 5px 0;
+            }
+
+            .card-details .price {
+                color: #f00;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .card-details .add-to-cart {
+                background-color: #008CBA;
+                border: none;
+                border-radius: 5px;
+                color: #fff;
+                cursor: pointer;
+                font-size: 16px;
+                margin-top: 10px;
+                padding: 10px;
+                width: 100%;
+            }
+
+        .footer {
+            background-color: var(--cir);
+            padding: 70px 0;
+        }
+
+        .footer-col {
+            width: 25%;
+            padding: 0 15px;
+        }
+
+            .footer-col h4 {
+                font-size: 18px;
+                color: #ffffff;
+                text-transform: capitalize;
+                margin-bottom: 35px;
+                font-weight: 500;
+                position: relative;
+            }
+
+                .footer-col h4::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: -10px;
+                    background-color: #e91e63;
+                    height: 2px;
+                    box-sizing: border-box;
+                    width: 50px;
+                }
+
+            .footer-col ul li:not(:last-child) {
+                margin-bottom: 10px;
+            }
+
+            .footer-col ul li a {
+                font-size: 16px;
+                text-transform: capitalize;
+                color: #ffffff;
+                text-decoration: none;
+                font-weight: 300;
+                color: #bbbbbb;
+                display: block;
+                transition: all 0.3s ease;
+            }
+
+            .footer-col ul li a {
+                font-size: 16px;
+                text-transform: capitalize;
+                color: #ffffff;
+                text-decoration: none;
+                font-weight: 300;
+                color: #bbbbbb;
+                display:  block;
+            }
+
+                .footer-col ul
+                li a:hover {
+                    color: #ffffff;
+                    padding-left: 10px;
+                }
+
+            .footer-col .social-links a {
+                display: inline-block;
+                height: 40px;
+                width: 40px;
+                background-color: rgba(255, 255, 255, 0.2);
+                margin: 0 10px 10px 0;
+                text-align: center;
+                Line-height: 40px;
+                border-radius: 50%;
+                color: #ffffff;
+                transition: all 0.5s ease;
+            }
+
+            .footer-col social-links a:hover {
+                color: #24262b;
+                background-color: #ffffff;
+            }
+
+        @media (max-width: 767px) {
+            .footer-col {
+                width: 50%;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media(max-width: 574px) {
+            .footer-col {
+                width: 100%
+            }
+        }
+
+
+        .logo {
+            flex: 1;
+        }
+
+            .logo img {
+                height: 80px;
+                /* Adjust the height as needed */
+                width: auto;
+            }
+
+        .navbar {
+            padding: 20px;
+            /* Adjust the padding as needed */
+        }
+
+        .icon li a:hover {
+            font-size: 30px;
+            padding: 6px;
+            margin: 3px;
+            background-color: aliceblue;
+            color: #b6ff00
+        }
+
+
+
+
+        .info a {
+            color: #333;
+            display: inline-block;
+            font-size: 27px;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: initial
+        }
+
+        .info h1 {
+            text-align: center
+        }
+
+        .bar .nav-link:hover {
+            background-color: gainsboro;
+        }
+    </style>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css" />
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <div>
+             <div class="logo bg-dark d-flex justify-content-center">
+            <img style="width: 150px; height: 150px;" src="img/logo.png" alt="Logo"/>
+        </div>
+
+
+
+          <div>
+            <header class="navbar navbar-expand-lg navbar-light bg-dark">
+                <div class="container d-flex justify-content-center align-items-center">
+                
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a style="font-size: 35px; padding: 3px; margin: 2px;" class="nav-link" href="#"><i
+                                        class="fas fa-cart-shopping"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a style="font-size: 35px; padding: 3px; margin: 2px;" class="nav-link" href="#"><i
+                                        class="fas fa-right-to-bracket"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+               </div>
+
+
+        <div class="pos-f-t">
+            <div class="collapse" id="navbarToggleExternalContent">
+                <div class="bg-dark p-4">
+                    <h4 class="text-white"></h4>
+
+
+
+                    <div class="text-white ml-auto">
+                        <ul>
+                            <li><a style="color: rgb(255, 255, 255);" class="list" href="#">موسم 2024</a></li>
+                            <li><a style="color: rgb(255, 255, 255);" class="list" href="#">ملابس صيفية</a></li>
+                            <li><a style="color: rgb(255, 255, 255);" class="list" href="#">ملابس شتوية</a></li>
+                            <li><a style="color: rgb(255, 255, 255);" class="list" href="#">اكسسوارات</a></li>
+                            <li><a style="color: rgb(255, 255, 255);" class="list" href="#">دليل الملابس</a></li>
+                            <li><a style="color: rgb(255, 255, 255);" class="list" href="#">دليل الشوزات</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <nav class="navbar navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+        </div>
+
+
+        <div class="bar">
+            <ul class="nav justify-content-center ">
+                <li class="nav-item">
+                    <a style="color: #333;" class="nav-link active" href="#">اخرى</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: #333;" class="nav-link" href="#">الدوري الانجليزي</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: #333;" class="nav-link" href="#">الدوري الاسباني</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: #333;" class="nav-link" href="#">الدوري الايطالي</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: #333;" class="nav-link" href="#">الدوري السعودي</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: #333;" class="nav-link" href="#">بلوفرات </a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: #333;" class="nav-link" href="#">منتخبات </a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: #333;" class="nav-link" href="#">تيشرتات كلاسيكية</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: #333;" class="nav-link" href="#">التخفيضات</a>
+                </li>
+            </ul>
+        </div>
+
+
+    
+
+
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <footer class="footer bg-dark" style="width: 100%">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 footer-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Our services</a></li>
+                            <li><a href="#">Privacy policy</a></li>
+                            <li><a href="#">Our news</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 footer-col">
+                        <h4>get help</h4>
+                        <ul>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">Order status</a></li>
+                            <li><a href="#">Payment options</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 footer-col">
+                        <h4>Online shop</h4>
+                        <ul>
+                            <li><a href="#">Watch</a></li>
+                            <li><a href="#">Bag</a></li>
+                            <li><a href="#">Shoes</a></li>
+                            <li><a href="#">Jacket</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 footer-col">
+                        <h4>Follow us</h4>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/IPAConnect/?locale=ar_AR"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/IPAConnect?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/ipaconnect/"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>
